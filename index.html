@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الوعي بصحة القلب | Heart Health Awareness</title>
+  <meta name="description" content="دراسة بحثية عن مستوى الوعي بصحة القلب وعوامل الخطر لدى المجتمع" />
+
+  <!-- Bootstrap 5 RTL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --red-main: #c0392b;
+      --red-light: #e74c3c;
+      --red-deep: #922b21;
+      --off-white: #fdfafa;
+      --gray-soft: #f5f5f5;
+      --text-dark: #1a1a1a;
+      --text-muted: #6c6c6c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--off-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar-custom {
+      background: #fff;
+      border-bottom: 2px solid #f0e0e0;
+      padding: 14px 0;
+      box-shadow: 0 2px 12px rgba(192,57,43,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .navbar-brand-text {
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--red-main);
+      letter-spacing: 0.5px;
+    }
+    .brand-icon { font-size: 1.4rem; margin-left: 6px; }
+
+    /* ===== HERO ===== */
+    .hero-section {
+      background: #fff;
+      padding: 70px 0 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(192,57,43,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* ===== HEART ANIMATION ===== */
+    .heart-wrapper {
+      display: inline-block;
+      margin-bottom: 30px;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      filter: drop-shadow(0 8px 30px rgba(192,57,43,0.3));
+    }
+    @keyframes heartbeat {
+      0%   { transform: scale(1); }
+      14%  { transform: scale(1.07); }
+      28%  { transform: scale(1); }
+      42%  { transform: scale(1.05); }
+      70%  { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .heart-img { width: 180px; height: auto; }
+
+    /* ===== SVG HEART FALLBACK (pure CSS) ===== */
+    .heart-svg {
+      display: none;
+      width: 160px; height: 160px;
+      margin: 0 auto 30px;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--red-main);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    /* ===== PULSE LINE ===== */
+    .pulse-line {
+      width: 100%; max-width: 500px;
+      margin: 0 auto 40px;
+      display: block;
+    }
+
+    /* ===== CTA BUTTON ===== */
+    .btn-survey {
+      background: linear-gradient(135deg, var(--red-main), var(--red-light));
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 14px 44px;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 24px rgba(192,57,43,0.35);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-survey:hover {
+      background: linear-gradient(135deg, var(--red-deep), var(--red-main));
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(192,57,43,0.45);
+    }
+    .btn-survey:active { transform: translateY(0); }
+
+    /* ===== ABOUT SECTION ===== */
+    .section-about {
+      background: var(--gray-soft);
+      padding: 60px 0;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--red-main);
+      margin-bottom: 16px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px; height: 3px;
+      background: var(--red-light);
+      border-radius: 2px;
+      margin: 8px auto 0;
+    }
+    .about-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 2;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ===== CARDS ===== */
+    .info-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+      border-top: 4px solid var(--red-light);
+    }
+    .info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(192,57,43,0.15);
+    }
+    .info-card .icon {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .info-card h5 {
+      font-weight: 800;
+      color: var(--red-main);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .info-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ===== RESULTS SECTION ===== */
+    .section-results {
+      background: #fff;
+      padding: 60px 0;
+    }
+    .result-bar-label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .result-bar-wrap {
+      background: #f0e0e0;
+      border-radius: 50px;
+      height: 14px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .result-bar-fill {
+      height: 100%;
+      border-radius: 50px;
+      background: linear-gradient(90deg, var(--red-main), var(--red-light));
+      transition: width 1.5s cubic-bezier(.25,.8,.25,1);
+      width: 0%;
+    }
+
+    /* Donut chart container */
+    .donut-wrapper {
+      position: relative;
+      width: 200px; height: 200px;
+      margin: 0 auto 20px;
+    }
+    .donut-center-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--red-main);
+    }
+    .donut-center-text small {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 6px;
+    }
+
+    /* ===== STATS BADGES ===== */
+    .stat-badge {
+      background: linear-gradient(135deg, var(--red-main), var(--red-light));
+      color: #fff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(192,57,43,0.25);
+      margin-bottom: 20px;
+    }
+    .stat-badge .num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      display: block;
+    }
+    .stat-badge .lbl {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* ===== SURVEY SECTION ===== */
+    .section-survey {
+      background: linear-gradient(135deg, var(--red-main) 0%, var(--red-deep) 100%);
+      padding: 70px 0;
+      text-align: center;
+    }
+    .section-survey h2 { color: #fff; font-weight: 900; font-size: 2rem; margin-bottom: 12px; }
+    .section-survey p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 32px; }
+    .btn-white {
+      background: #fff;
+      color: var(--red-main);
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 14px 44px;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-white:hover {
+      background: #f8d7d7;
+      color: var(--red-deep);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.25);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1a1a1a;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px;
+      font-size: 0.92rem;
+    }
+    footer span { color: var(--red-light); }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 576px) {
+      .hero-title { font-size: 1.8rem; }
+      .heart-img { width: 130px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar-custom">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="navbar-brand-text">
+      <span class="brand-icon">🫀</span>
+      وعي القلب
+    </div>
+    <div class="d-flex gap-3">
+      <a href="#about" class="text-decoration-none text-muted fw-600 small">عن الدراسة</a>
+      <a href="#results" class="text-decoration-none text-muted fw-600 small">النتائج</a>
+      <a href="#survey" class="text-decoration-none" style="color:var(--red-main);font-weight:700;font-size:0.9rem;">الاستبيان ←</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero-section">
+  <div class="container">
+
+    <!-- Heart Image -->
+    <div class="heart-wrapper">
+      <img src="heart.png" alt="قلب" class="heart-img" onerror="this.style.display='none';document.getElementById('svg-heart').style.display='block';" />
+      <!-- SVG Fallback -->
+      <svg id="svg-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 90" class="heart-svg" style="display:none;">
+        <path d="M50 85 C10 60, 5 30, 20 18 C30 10, 42 12, 50 22 C58 12, 70 10, 80 18 C95 30, 90 60, 50 85Z"
+          fill="url(#hg)" stroke="none"/>
+        <defs>
+          <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#e74c3c"/>
+            <stop offset="100%" style="stop-color:#922b21"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <h1 class="hero-title">الوعي بصحة القلب وعوامل الخطر</h1>
+    <p class="hero-subtitle">دراسة بحثية لقياس مستوى الوعي المجتمعي بصحة القلب</p>
+
+    <!-- Pulse SVG line -->
+    <svg class="pulse-line" viewBox="0 0 500 60" xmlns="http://www.w3.org/2000/svg">
+      <polyline
+        points="0,30 80,30 110,10 130,50 150,5 170,55 190,30 500,30"
+        fill="none" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+        opacity="0.5"/>
+    </svg>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCfohPDwJuJVc0hmjNcoImwGrJOB2QLkmRO0c7nXISnEYfpw/viewform?usp=publish-editor" target="_blank" class="btn-survey">
+      <i class="fa-solid fa-clipboard-list"></i>
+      شارك في الاستبيان
+    </a>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section-about" id="about">
+  <div class="container text-center">
+    <h2 class="section-title reveal">عن الدراسة</h2>
+    <p class="about-text reveal">
+      تهدف هذه الدراسة إلى قياس مستوى الوعي بصحة القلب وعوامل الخطر المرتبطة به لدى أفراد المجتمع،
+      وذلك من خلال استبيان إلكتروني يغطي عدة محاور أساسية مثل: عوامل الخطر، والأعراض التحذيرية،
+      وعادات نمط الحياة، ومعرفة الوقاية. النتائج ستُستخدم لأغراض بحثية علمية بحتة.
+    </p>
+
+    <div class="row g-4 mt-4">
+      <div class="col-md-4 reveal">
+        <div class="info-card">
+          <span class="icon">🎯</span>
+          <h5>هدف الدراسة</h5>
+          <p>قياس مستوى المعرفة والوعي بأمراض القلب وعوامل الخطر المؤدية إليها لدى المجتمع</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="info-card">
+          <span class="icon">📋</span>
+          <h5>محاور الاستبيان</h5>
+          <p>البيانات الشخصية • عوامل الخطر • الأعراض • نمط الحياة • الوقاية والمعرفة</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="info-card">
+          <span class="icon">🔒</span>
+          <h5>السرية والخصوصية</h5>
+          <p>جميع البيانات سرية وتُستخدم للأغراض البحثية فقط، ولا تُشارك مع أي جهة خارجية</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESULTS ===== -->
+<section class="section-results" id="results">
+  <div class="container">
+    <h2 class="section-title text-center reveal">نموذج النتائج</h2>
+    <p class="text-center text-muted mb-5 reveal" style="font-size:0.95rem;">
+      عرض توضيحي لكيفية تقديم النتائج بعد تحليل ردود المشاركين
+    </p>
+
+    <!-- Stats Row -->
+    <div class="row g-3 mb-5 justify-content-center reveal">
+      <div class="col-6 col-md-3">
+        <div class="stat-badge">
+          <span class="num" id="count-participants">0</span>
+          <span class="lbl">مشارك</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-badge">
+          <span class="num" id="count-aware">0%</span>
+          <span class="lbl">مستوى الوعي العام</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-badge">
+          <span class="num" id="count-risk">0%</span>
+          <span class="lbl">يعرفون عوامل الخطر</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-badge">
+          <span class="num" id="count-exercise">0%</span>
+          <span class="lbl">يمارسون الرياضة</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center g-5">
+      <!-- Bar Charts -->
+      <div class="col-lg-7 reveal">
+        <h5 style="color:var(--red-main);font-weight:800;margin-bottom:24px;">مستوى الوعي حسب المحاور</h5>
+
+        <div class="result-bar-label">
+          <span>معرفة عوامل الخطر</span>
+          <span>72%</span>
+        </div>
+        <div class="result-bar-wrap">
+          <div class="result-bar-fill" data-width="72"></div>
+        </div>
+
+        <div class="result-bar-label">
+          <span>التعرف على أعراض النوبة القلبية</span>
+          <span>58%</span>
+        </div>
+        <div class="result-bar-wrap">
+          <div class="result-bar-fill" data-width="58"></div>
+        </div>
+
+        <div class="result-bar-label">
+          <span>اتباع نظام غذائي صحي</span>
+          <span>45%</span>
+        </div>
+        <div class="result-bar-wrap">
+          <div class="result-bar-fill" data-width="45"></div>
+        </div>
+
+        <div class="result-bar-label">
+          <span>ممارسة النشاط البدني بانتظام</span>
+          <span>38%</span>
+        </div>
+        <div class="result-bar-wrap">
+          <div class="result-bar-fill" data-width="38"></div>
+        </div>
+
+        <div class="result-bar-label">
+          <span>الفحص الدوري والمتابعة الطبية</span>
+          <span>51%</span>
+        </div>
+        <div class="result-bar-wrap">
+          <div class="result-bar-fill" data-width="51"></div>
+        </div>
+      </div>
+
+      <!-- Donut Chart -->
+      <div class="col-lg-5 text-center reveal">
+        <h5 style="color:var(--red-main);font-weight:800;margin-bottom:20px;">توزيع مستوى الوعي العام</h5>
+        <div class="donut-wrapper">
+          <canvas id="donutChart" width="200" height="200"></canvas>
+          <div class="donut-center-text">
+            62%
+            <small>وعي متوسط</small>
+          </div>
+        </div>
+        <div class="mt-3 d-flex flex-column align-items-center gap-2">
+          <div><span class="legend-dot" style="background:#c0392b;"></span> وعي عالٍ — 28%</div>
+          <div><span class="legend-dot" style="background:#e74c3c;"></span> وعي متوسط — 62%</div>
+          <div><span class="legend-dot" style="background:#f1b4b4;"></span> وعي منخفض — 10%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SURVEY CTA ===== -->
+<section class="section-survey" id="survey">
+  <div class="container">
+    <h2>🫀 شارك في الاستبيان</h2>
+    <p>مشاركتك تساهم في إثراء البحث العلمي وتعزيز الوعي بصحة القلب في مجتمعنا<br/>
+    الاستبيان لا يستغرق أكثر من <strong>5 دقائق</strong></p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCfohPDwJuJVc0hmjNcoImwGrJOB2QLkmRO0c7nXISnEYfpw/viewform?usp=publish-editor" target="_blank" class="btn-white">
+      <i class="fa-brands fa-google"></i>
+      ابدأ الاستبيان الآن
+    </a>
+    <p class="mt-4" style="color:rgba(255,255,255,0.6);font-size:0.85rem;">
+      <i class="fa-solid fa-lock me-1"></i>
+      جميع الردود تبقى سرية وتُستخدم للأغراض البحثية فقط
+    </p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2025 دراسة الوعي بصحة القلب | جميع الحقوق محفوظة</p>
+  <p class="mt-1">صُمّم بـ <span>❤</span> لخدمة البحث العلمي</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // ===== SCROLL REVEAL =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== ANIMATED COUNTERS =====
+  function animateCounter(id, target, suffix = '', duration = 1500) {
+    const el = document.getElementById(id);
+    let start = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { start = target; clearInterval(timer); }
+      el.textContent = Math.floor(start) + suffix;
+    }, 16);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter('count-participants', 150, '');
+        animateCounter('count-aware', 62, '%');
+        animateCounter('count-risk', 72, '%');
+        animateCounter('count-exercise', 38, '%');
+        statsObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  statsObserver.observe(document.querySelector('.stat-badge'));
+
+  // ===== ANIMATED BARS =====
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.result-bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+        barObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const barsSection = document.querySelector('#results');
+  if (barsSection) barObserver.observe(barsSection);
+
+  // ===== DONUT CHART (pure canvas) =====
+  function drawDonut() {
+    const canvas = document.getElementById('donutChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const cx = 100, cy = 100, r = 80, inner = 55;
+    const data = [
+      { pct: 0.28, color: '#c0392b' },
+      { pct: 0.62, color: '#e74c3c' },
+      { pct: 0.10, color: '#f1b4b4' },
+    ];
+    let start = -Math.PI / 2;
+    data.forEach(d => {
+      const end = start + d.pct * 2 * Math.PI;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, start, end);
+      ctx.closePath();
+      ctx.fillStyle = d.color;
+      ctx.fill();
+      start = end;
+    });
+    // Inner circle (donut hole)
+    ctx.beginPath();
+    ctx.arc(cx, cy, inner, 0, 2 * Math.PI);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+  }
+  window.addEventListener('load', drawDonut);
+</script>
+</body>
+</html>
